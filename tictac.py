@@ -93,21 +93,16 @@ class Decider(): #check the winner
 
         user.items.sort(key=int) #sort the user's list in a numerical order
 
-        for x in winner:
-            if x == user.items:
-                print(f"{user.name} has won!")
-                sys.exit(1)
 
-        if len(user.items) > 3: #if user marks more than three blocks
-            for win_combo in winner:
-                for element in win_combo:
-                    if element in user.items:
-                        true += 1
-                        if true == 3:
-                            print(f"{user.name} has won!")
-                            sys.exit(1)
+        for win_combo in winner:
+            for element in win_combo:
+                if element in user.items:
+                    true += 1
+                    if true == 3:
+                        print(f"{user.name} has won!")
+                        sys.exit(1)
 
-                true = 0 #reset it after going through each iteration containing a winning combination
+            true = 0 #reset it after going through each iteration containing a winning combination
 
         if not " " in grid.grid.values(): #if no one wins
             print("Draw!")
